@@ -59,6 +59,10 @@ sites:
     sitemap_urls:
       - "https://geometrylite.io/sitemap.xml"
     active: true
+  - name: "Bloxinformer"
+    sitemap_urls:
+      - "https://bloxinformer.com/sitemap.xml"
+    active: true
 
 feishu:
   webhook_url: "https://open.larksuite.com/open-apis/bot/v2/hook/c78e401d-1a1f-4500-830b-36528b83011a"
