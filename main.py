@@ -80,13 +80,13 @@ def save_diff(site_name, new_urls):
 
 def compare_data(site_name, new_urls):
     latest_file = Path('latest') / f'{site_name}.json'
-    
+
     if not latest_file.exists():
-        return []
-        
+        return new_urls  # 第一次运行，所有URL都视为新增
+
     with open(latest_file) as f:
         last_urls = set(f.read().splitlines())
-    
+
     return [url for url in new_urls if url not in last_urls]
 
 def send_feishu_notification(new_urls, config, site_name):
@@ -100,7 +100,7 @@ def send_feishu_notification(new_urls, config, site_name):
         "msg_type": "interactive",
         "card": {
             "header": {
-                "title": {"tag": "plain_text", "content": f"🎮 {site_name} 游戏上新通知"},
+                "title": {"tag": "plain_text", "content": f"🔔 {site_name} 内容更新通知"},
                 "template": "green"
             },
             "elements": [
@@ -108,7 +108,7 @@ def send_feishu_notification(new_urls, config, site_name):
                     "tag": "div",
                     "text": {
                         "tag": "lark_md",
-                        "content": f"**今日新增 {len(new_urls)} 款游戏**\n\n" + "\n".join(f"• {url}" for url in new_urls[:10])
+                        "content": f"**今日新增 {len(new_urls)} 条内容**\n\n" + "\n".join(f"• {url}" for url in new_urls[:10])
                     }
                 }
             ]

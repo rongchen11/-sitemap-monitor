@@ -15,10 +15,6 @@ sites:
     sitemap_urls:
       - "https://www.adcreative.ai/sitemap.xml"
     active: true
-  - name: "Canva"
-    sitemap_urls:
-      - "https://www.canva.com/sitemap.xml"
-    active: true
   - name: "NoteGPT"
     sitemap_urls:
       - "https://notegpt.io/sitemap.xml"
